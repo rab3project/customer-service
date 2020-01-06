@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,6 +34,9 @@ public class CustomerEntity {
 	private Date createdAt;
 	@Column(name = "updated_at")
 	private Date updatedAt;
+	
+	@OneToOne(mappedBy = "customer")
+	private BillingAddressEntity billingAddress;
 
 	public Integer getCustomerId() {
 		return customerId;
