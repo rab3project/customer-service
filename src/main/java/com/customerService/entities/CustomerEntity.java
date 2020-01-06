@@ -1,5 +1,7 @@
 package com.customerService.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,25 +10,30 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="customer")
+@Table(name = "customer")
 public class CustomerEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer customerId;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String fName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lName;
-	
-	@Column(name="email")
+
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name="phone")
-	private String phone;	
-	
+
+	@Column(name = "phone")
+	private String phone;
+
+	@Column(name = "created_at")
+	private Date createdAt;
+	@Column(name = "updated_at")
+	private Date updatedAt;
+
 	public Integer getCustomerId() {
 		return customerId;
 	}
@@ -66,6 +73,21 @@ public class CustomerEntity {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
 }
