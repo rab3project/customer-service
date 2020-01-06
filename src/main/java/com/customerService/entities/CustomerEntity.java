@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -32,11 +34,26 @@ public class CustomerEntity {
 
 	@Column(name = "created_at")
 	private Date createdAt;
+	
 	@Column(name = "updated_at")
 	private Date updatedAt;
-	
+
 	@OneToOne(mappedBy = "customer")
 	private BillingAddressEntity billingAddress;
+	
+	@PrePersist
+	public void onPersist() {
+		if(this.createdAt == null) {
+			this.createdAt = new Date();
+		}
+	}
+	
+	@PreUpdate
+	public void onUpdate() {
+		if(this.updatedAt == null) {
+			this.updatedAt = new Date();
+		}
+	}
 
 	public Integer getCustomerId() {
 		return customerId;
