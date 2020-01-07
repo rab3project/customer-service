@@ -2,8 +2,10 @@ package com.customerService.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +20,7 @@ public class CustomerEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer customerId;
+	private Integer id;
 
 	@Column(name = "first_name")
 	private String fName;
@@ -34,33 +36,36 @@ public class CustomerEntity {
 
 	@Column(name = "created_at")
 	private Date createdAt;
-	
+
 	@Column(name = "updated_at")
 	private Date updatedAt;
 
-	@OneToOne(mappedBy = "customer")
+	@OneToOne(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private BillingAddressEntity billingAddress;
-	
+
+	@OneToOne(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private CustomerLoginEntity login;
+
 	@PrePersist
 	public void onPersist() {
-		if(this.createdAt == null) {
+		if (this.createdAt == null) {
 			this.createdAt = new Date();
 		}
 	}
-	
+
 	@PreUpdate
 	public void onUpdate() {
-		if(this.updatedAt == null) {
+		if (this.updatedAt == null) {
 			this.updatedAt = new Date();
 		}
 	}
 
-	public Integer getCustomerId() {
-		return customerId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getfName() {
@@ -109,6 +114,22 @@ public class CustomerEntity {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public BillingAddressEntity getBillingAddress() {
+		return billingAddress;
+	}
+
+	public void setBillingAddress(BillingAddressEntity billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+
+	public CustomerLoginEntity getLogin() {
+		return login;
+	}
+
+	public void setLogin(CustomerLoginEntity login) {
+		this.login = login;
 	}
 
 }

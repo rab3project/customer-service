@@ -7,6 +7,8 @@ public class CustomerDto {
 	private String lname;
 	private String email;
 	private String phone;
+	private BillingAddressDto billingaddress;
+	private CustomerLoginDto customerLogin;
 
 	public Integer getCustomerId() {
 		return customerId;
@@ -46,6 +48,22 @@ public class CustomerDto {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public BillingAddressDto getBillingaddress() {
+		return billingaddress;
+	}
+
+	public void setBillingaddress(BillingAddressDto billingaddress) {
+		this.billingaddress = billingaddress;
+	}
+
+	public CustomerLoginDto getCustomerLogin() {
+		return customerLogin;
+	}
+
+	public void setCustomerLogin(CustomerLoginDto customerLogin) {
+		this.customerLogin = customerLogin;
 	}
 
 }

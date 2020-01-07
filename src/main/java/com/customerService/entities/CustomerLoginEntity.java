@@ -2,12 +2,17 @@ package com.customerService.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -27,14 +32,29 @@ public class CustomerLoginEntity {
 	@Column(name = "last_sign_in")
 	private Date lastSignIn;
 
-	@Column(name = "updated_at")
+	@Column(name = "created_at")
 	private Date createdAt;
 
 	@Column(name = "updated_at")
 	private Date upatedAt;
 
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id")
 	private CustomerEntity customer;
+
+	@PrePersist
+	public void onPersist() {
+		if (this.createdAt == null) {
+			this.createdAt = new Date();
+		}
+	}
+
+	@PreUpdate
+	public void onUpdate() {
+		if (this.upatedAt == null) {
+			this.upatedAt = new Date();
+		}
+	}
 
 	public Date getCreatedAt() {
 		return createdAt;

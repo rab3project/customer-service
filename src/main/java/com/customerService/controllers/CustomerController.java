@@ -18,7 +18,7 @@ public class CustomerController {
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public void saveCustomer(@RequestBody CustomerDto dto) {
-		customerService.saveCustomer(dto);
+		customerService.createCustomer(dto);
 	}
 
 }

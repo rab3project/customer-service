@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -20,24 +22,45 @@ public class BillingAddressEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	@Column(name = "address1")
 	private String address1;
+
 	@Column(name = "address2")
 	private String address2;
+
 	@Column(name = "city")
 	private String city;
+
 	@Column(name = "state")
 	private String state;
+
 	@Column(name = "zip_code")
 	private String zip;
+
 	@Column(name = "created_at")
 	private Date createdAt;
+
 	@Column(name = "updated_at")
 	private Date updatedAt;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id")
 	private CustomerEntity customer;
+
+	@PrePersist
+	public void onPersist() {
+		if (this.createdAt == null) {
+			this.createdAt = new Date();
+		}
+	}
+
+	@PreUpdate
+	public void onUpdate() {
+		if (this.updatedAt == null) {
+			this.updatedAt = new Date();
+		}
+	}
 
 	public Integer getId() {
 		return id;
