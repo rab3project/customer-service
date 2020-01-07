@@ -3,7 +3,7 @@ package com.customerService.dtos;
 import java.util.Date;
 
 public class BillingAddressDto {
-
+	private int id;
 	private String address1;
 	private String address2;
 	private String city;
@@ -11,6 +11,23 @@ public class BillingAddressDto {
 	private String zip;
 	private Date createdAt;
 	private Date updatedAt;
+	private CustomerDto customerDto;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public CustomerDto getCustomerDto() {
+		return customerDto;
+	}
+
+	public void setCustomerDto(CustomerDto customerDto) {
+		this.customerDto = customerDto;
+	}
 
 	public String getAddress1() {
 		return address1;

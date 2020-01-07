@@ -1,5 +1,7 @@
 package com.customerService.dtos;
 
+import java.util.Date;
+
 public class CustomerDto {
 
 	private Integer customerId;
@@ -7,6 +9,8 @@ public class CustomerDto {
 	private String lname;
 	private String email;
 	private String phone;
+	private Date createdAt;
+	private Date updatedAt;
 	private BillingAddressDto billingaddress;
 	private CustomerLoginDto customerLogin;
 
@@ -48,6 +52,22 @@ public class CustomerDto {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	public BillingAddressDto getBillingaddress() {

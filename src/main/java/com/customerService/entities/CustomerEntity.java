@@ -13,6 +13,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "customer")
@@ -29,9 +33,11 @@ public class CustomerEntity {
 	private String lName;
 
 	@Column(name = "email")
+	@NotNull
 	private String email;
 
 	@Column(name = "phone")
+	@NotBlank(message="username cannot be blank")
 	private String phone;
 
 	@Column(name = "created_at")

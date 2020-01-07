@@ -16,6 +16,8 @@ public class CustomerLoginDto {
 
 	private Date upatedAt;
 
+	private CustomerDto customerDto;
+
 	public Integer getId() {
 		return id;
 	}
@@ -62,6 +64,14 @@ public class CustomerLoginDto {
 
 	public void setUpatedAt(Date upatedAt) {
 		this.upatedAt = upatedAt;
+	}
+
+	public CustomerDto getCustomerDto() {
+		return customerDto;
+	}
+
+	public void setCustomerDto(CustomerDto customerDto) {
+		this.customerDto = customerDto;
 	}
 
 }

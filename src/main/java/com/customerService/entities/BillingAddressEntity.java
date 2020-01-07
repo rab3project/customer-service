@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "billing_address")
@@ -24,6 +25,7 @@ public class BillingAddressEntity {
 	private Integer id;
 
 	@Column(name = "address1")
+	@NotBlank(message="address cannot be blank")
 	private String address1;
 
 	@Column(name = "address2")
