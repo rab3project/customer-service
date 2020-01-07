@@ -2,12 +2,18 @@ package com.customerService.dtos;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class CustomerLoginDto {
 
 	private Integer id;
 
+	@NotNull(message = "username can not be null")
 	private String userName;
 
+	@NotNull
+	@Size(min=8, max=16, message = "password must be equal or greater than 8 characters and less than 16 characters")
 	private String password;
 
 	private Date lastSignIn;

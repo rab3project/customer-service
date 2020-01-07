@@ -2,8 +2,15 @@ package com.customerService.dtos;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 public class BillingAddressDto {
+<<<<<<< HEAD
 	private int id;
+=======
+
+	@NotNull(message = "address1 is required")
+>>>>>>> b6f5462a1725a251a39283b2f1e755a81a05cb6d
 	private String address1;
 	private String address2;
 	private String city;
