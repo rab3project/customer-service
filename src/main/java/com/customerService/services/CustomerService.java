@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.customerService.dtos.BillingAddressDto;
 import com.customerService.dtos.CustomerDto;
 import com.customerService.dtos.CustomerLoginDto;
+import com.customerService.dtos.MessageDto;
 import com.customerService.entities.BillingAddressEntity;
 import com.customerService.entities.CustomerEntity;
 import com.customerService.entities.CustomerLoginEntity;
@@ -16,7 +17,14 @@ public class CustomerService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
-
+	@Autowired
+	private NotificationService notificationService;
+	
+	private final static String WELCOME_EMAIL = "Welcome Email";
+	private final static String EMAIL = "EMAIL";
+	
+	private final static String FROM = "hr@rab3tech.net";
+	
 	public CustomerDto getByName(String fName) {
 		return convert(customerRepository.findByfName(fName));
 	}
@@ -31,7 +39,7 @@ public class CustomerService {
 		CustomerLoginEntity customer = new CustomerLoginEntity();
 		customer.setUserName(dto.getCustomerLogin().getUserName());
 		customer.setPassword(dto.getCustomerLogin().getPassword());
-//		customer.setCustomer(entity);
+		customer.setCustomer(entity);
 
 		BillingAddressEntity address = new BillingAddressEntity();
 		address.setAddress1(dto.getBillingaddress().getAddress1());
@@ -39,12 +47,24 @@ public class CustomerService {
 		address.setCity(dto.getBillingaddress().getCity());
 		address.setState(dto.getBillingaddress().getState());
 		address.setZip(dto.getBillingaddress().getZip());
-//		address.setCustomer(entity);
+		address.setCustomer(entity);
 
 		entity.setBillingAddress(address);
 		entity.setLogin(customer);
 
-		return convert(customerRepository.save(entity));
+		CustomerDto custdto = convert(customerRepository.save(entity));
+		
+		// send notification
+		MessageDto message = new MessageDto();
+		message.setTo(dto.getEmail());
+		message.setHeader(WELCOME_EMAIL);
+		message.setType(EMAIL);
+		message.setFrom(FROM);
+		
+		notificationService.sendMessage(message);
+		
+		
+		return custdto;
 
 	}
 

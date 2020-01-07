@@ -13,3 +13,7 @@ spring:
         format_sql: false
     database-platform: org.hibernate.dialect.MySQLDialect
 
+sqs:
+  queue:
+    endpoint: https://sqs.us-east-1.amazonaws.com/054603371339/customer_service_dev
+    name: customer_service_dev

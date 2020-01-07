@@ -1,11 +1,15 @@
 package com.customerService.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class CustomerLoginDto {
+public class CustomerLoginDto implements Serializable {
+
+
+	private static final long serialVersionUID = 6267721246478092068L;
 
 	private Integer id;
 

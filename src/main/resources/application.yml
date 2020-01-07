@@ -3,13 +3,18 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/facebook
+    url: jdbc:mysql://localhost:3306/customer_service_dev
     username: root
-    password: Root
+    password: rootroot
   jpa:
     properties:
       hibernate:
         show_sql: false
         format_sql: false
     database-platform: org.hibernate.dialect.MySQLDialect
+    
+sqs:
+  queue:
+    endpoint : https://sqs.us-east-1.amazonaws.com/054603371339/dev-customer-service-incoming
+    name: dev-customer-service-incoming
 
