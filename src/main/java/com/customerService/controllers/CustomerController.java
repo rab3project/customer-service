@@ -1,5 +1,7 @@
 package com.customerService.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,7 @@ public class CustomerController {
 	private CustomerService customerService;
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public void saveCustomer(@RequestBody CustomerDto dto) {
+	public void saveCustomer(@Valid @RequestBody CustomerDto dto) {
 		customerService.saveCustomer(dto);
 	}
 

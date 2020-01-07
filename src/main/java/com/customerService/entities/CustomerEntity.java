@@ -40,6 +40,7 @@ public class CustomerEntity {
 
 	@OneToOne(mappedBy = "customer")
 	private BillingAddressEntity billingAddress;
+
 	
 	@PrePersist
 	public void onPersist() {

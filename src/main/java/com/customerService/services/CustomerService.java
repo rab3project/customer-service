@@ -24,7 +24,7 @@ public class CustomerService {
 		if (dto != null) {
 			en = new CustomerEntity();
 			en.setfName(dto.getFname());
-			en.setlName(dto.getLname());
+			en.setlName(dto.getLname()); 
 			en.setEmail(dto.getEmail());
 			en.setPhone(dto.getPhone());
 
