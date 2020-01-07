@@ -1,18 +1,12 @@
 package com.customerService.dtos;
-
-<<<<<<< HEAD
 import java.util.Date;
-=======
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
->>>>>>> b6f5462a1725a251a39283b2f1e755a81a05cb6d
-
 public class CustomerDto {
 
 	private Integer customerId;
 	private String fname;
 	private String lname;
-	
 	@Email
 	@NotNull(message = "eamil can not be null")
 	private String email;
