@@ -1,10 +1,16 @@
 package com.customerService.dtos;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+
 public class CustomerDto {
 
 	private Integer customerId;
 	private String fname;
 	private String lname;
+	
+	@Email
+	@NotNull(message = "eamil can not be null")
 	private String email;
 	private String phone;
 	private BillingAddressDto billingaddress;
