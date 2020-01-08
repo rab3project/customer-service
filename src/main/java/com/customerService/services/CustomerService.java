@@ -1,5 +1,7 @@
 package com.customerService.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +49,10 @@ public class CustomerService {
 		return convert(customerRepository.save(entity));
 
 	}
+	public CustomerDto findById(Integer id) {
+		Optional<CustomerEntity> cEntity = customerRepository.findById(id);
+		return convert(cEntity);
+	}
 
 	public CustomerDto convert(CustomerEntity ent) {
 		CustomerDto dtos = null;
@@ -54,7 +60,7 @@ public class CustomerService {
 			dtos = new CustomerDto();
 			dtos.setCustomerId(ent.getId());
 			dtos.setFname(ent.getfName());
-			dtos.setLname(ent.getlName());
+			dtos.setLname(ent.getlName()); 
 			dtos.setEmail(ent.getEmail());
 			dtos.setPhone(ent.getPhone());
 			dtos.setCreatedAt(ent.getCreatedAt());
@@ -82,5 +88,7 @@ public class CustomerService {
 
 		return dtos;
 	}
+
+	
 
 }
