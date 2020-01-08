@@ -71,7 +71,7 @@ public class CustomerService {
 	}
 	public CustomerDto findById(Integer id) {
 		Optional<CustomerEntity> cEntity = customerRepository.findById(id);
-		return convert(cEntity);
+		return convert(cEntity.get());
 	}
 
 	public CustomerDto convert(CustomerEntity ent) {

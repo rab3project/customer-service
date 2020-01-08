@@ -25,7 +25,7 @@ public class CustomerController {
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public CustomerDto findById(@RequestParam Integer id) {
-		customerService.findById(id);
+		return customerService.findById(id);
 	}
 	
 
