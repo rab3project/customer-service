@@ -1,15 +1,25 @@
 package com.customerService.dtos;
+import java.io.Serializable;
+
 import java.util.Date;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-public class CustomerDto {
 
+
+public class CustomerDto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3248917713969658188L;
 	private Integer customerId;
 	private String fname;
 	private String lname;
+	
 	@Email
 	@NotNull(message = "eamil can not be null")
 	private String email;
+	
 	private String phone;
 	private Date createdAt;
 	private Date updatedAt;

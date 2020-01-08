@@ -1,10 +1,15 @@
 package com.customerService.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
-public class BillingAddressDto {
+public class BillingAddressDto implements Serializable {
+
+
+	private static final long serialVersionUID = -947085728879020515L;
+
 
 	private int id;
 

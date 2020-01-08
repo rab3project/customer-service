@@ -1,4 +1,5 @@
 package com.customerService.controllers;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.customerService.dtos.CustomerDto;
 import com.customerService.services.CustomerService;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -16,12 +18,8 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-
-	
-	
-	@RequestMapping(value="", method=RequestMethod.POST)
-	public void saveCustomer(@Valid @RequestBody CustomerDto dto)
-	{
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	public void saveCustomer(@Valid @RequestBody CustomerDto dto) {
 		customerService.createCustomer(dto);
 	}
 	
